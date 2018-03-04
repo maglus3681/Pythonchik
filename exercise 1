@@ -7,3 +7,35 @@ c = input('третья сторона: ')
 p = (a + b + c) / 2
 S = math.sqrt(p * (p-a) * (p-b) * (p-c))
 print(S)
+
+# 2
+
+number = input('Введи число: ')
+list = range(number)
+sqrt = int(math.sqrt(number) // 1)
+for i in range(2,sqrt + 1):
+  for num in list:
+    if ((num % i == 0) & (num != i)):
+      list.remove(num)
+print(list)  
+
+# 3
+
+first = input('первое число: ')
+second = input('второе число: ')
+answer = []
+for i in range(first,second):
+  if i % 5 == 0: answer.append(i)
+print(answer)
+
+# 4
+
+a = input('Коэффициент перед x2: ')
+b = input('Коэффициент перед x: ')
+c = input('Свободный коэффициент: ')
+if b * b - 4 * a * c < 0:
+  print('решения нет')
+else: 
+  x1 = (-b - math.sqrt(b * b - 4 * a * c)) / (2 * a)
+  x2 = (-b + math.sqrt(b * b - 4 * a * c)) / (2 * a)
+  print(x1, x2)
