@@ -1,16 +1,16 @@
 import math
 
 # 1
-a = input('первая сторона: ')
-b = input('вторая сторона: ')
-c = input('третья сторона: ')
+a = int(input('первая сторона: '))
+b = int(input('вторая сторона: '))
+c = int(input('третья сторона: '))
 p = (a + b + c) / 2
 S = math.sqrt(p * (p-a) * (p-b) * (p-c))
 print(S)
 
 # 2
 
-number = input('Введи число: ')
+number = int(input('Введи число: '))
 list = range(number)
 sqrt = int(math.sqrt(number) // 1)
 for i in range(2,sqrt + 1):
@@ -21,8 +21,8 @@ print(list)
 
 # 3
 
-first = input('первое число: ')
-second = input('второе число: ')
+first = int(input('первое число: '))
+second = int(input('второе число: '))
 answer = []
 for i in range(first,second):
   if i % 5 == 0: answer.append(i)
@@ -30,12 +30,41 @@ print(answer)
 
 # 4
 
-a = input('Коэффициент перед x2: ')
-b = input('Коэффициент перед x: ')
-c = input('Свободный коэффициент: ')
+a = int(input('Коэффициент перед x2: '))
+b = int(input('Коэффициент перед x: '))
+c = int(input('Свободный коэффициент: '))
 if b * b - 4 * a * c < 0:
   print('решения нет')
-else: 
+elif b * b - 4 * a * c > 0:
   x1 = (-b - math.sqrt(b * b - 4 * a * c)) / (2 * a)
   x2 = (-b + math.sqrt(b * b - 4 * a * c)) / (2 * a)
   print(x1, x2)
+elif b * b - 4 * a * c == 0:
+  print(-b/(2*a))
+
+import numpy as np
+
+#5
+
+Debt = {"Сыпало": 1,
+        "Вика": 2,
+        "Крюк": 3, 
+        "Оля": 4, 
+        "Маленькая Аня": 5, 
+        "Аня прогер": 6, 
+        "Аспирант": 7, 
+        "Солдафон":8, 
+        "Теймур":9, 
+        "Шилин": 10}
+        
+mean_debt = np.mean(list(Debt.values()))
+total_debt = sum(Debt.values())
+M_debt = np.var(list(Debt.values()))
+print (" Средняя сумма долга: {} \n Общий долг: {} \n Дисперсия долга {}" .format(mean_debt, total_debt, M_debt))
+for key in Debt:
+    if Debt[key] == min(Debt.values()):
+        print("Минимальный долг: {}" .format(key))
+    elif Debt[key] == max(Debt.values()):
+        print("Максимальный долг: {}" .format(key))
+    elif abs(Debt[key] - mean_debt) == min(abs(list(Debt.values()) - mean_debt)):
+        print("Близкий к среднему долг: {}" .format(key))
